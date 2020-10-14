@@ -163,7 +163,7 @@ function buildPassword(passInfo){
   return password;
 }
 
-function generatePassword(){
+function writePassword(){
   let info = getPassInfo();
   if(info === "Input Invalid"){
     return null;
@@ -184,6 +184,7 @@ function generatePassword(){
   }
 
   console.log(password);
+  document.getElementById(password).innerHTML = password;
   return password;
   }
 }

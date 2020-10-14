@@ -45,24 +45,15 @@ function verifyCharChoice(infoArray){
 
 function getPassInfo(){
   let passInfo = [];
-  let verified = false;
   let attempts = 5;
-  while(verified === false && attempts > 0){
-    passInfo.push(getLength(), getUpper(), getLower(), getSpecial(), getNumber());
-    if (!verifyLength(passInfo) || !verifyCharChoice(passInfo)){
-      passInfo = [];
-      attempts--;
-      alert("Your choices in password requirements were invalid. Remember to input a number between and including 8 and 128, and confirming at least one set of Characters. Please try again");
-      alert("You have " + attempts + " attempts remaining");
-      if (attempts === 0){
-        return "Input Invalid";
-      }
-    }
-    else{
-      verified = true;
-    }
+  passInfo.push(getLength(), getUpper(), getLower(), getSpecial(), getNumber());
+  if (verifyLength(passInfo) && verifyCharChoice(passInfo)){
+    return passInfo;
   }
-  return passInfo;
+  else{
+      alert("Your choices in password requirements were invalid. Remember to input a number between and including 8 and 128, and confirming at least one set of Characters. Please try again");
+      return "Input Invalid";
+  }
 }
 
 function containsCharInArray(pass, array){
@@ -175,7 +166,6 @@ function buildPassword(passInfo){
 function generatePassword(){
   let info = getPassInfo();
   if(info === "Input Invalid"){
-    alert("You haven't inputted valid criteria, pleas try again.")
     return null;
   }
   else{

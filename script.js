@@ -84,7 +84,7 @@ function validatePassword(info, pass){
   else{
     checkLength = false;
   }
-  console.log("checked length: " + checkLength);
+  // console.log("checked length: " + checkLength);
 
   if((info[1] && containsCharInArray(pass, upperArr)) || !info[1]){
     checkUpperArr = true;
@@ -92,7 +92,7 @@ function validatePassword(info, pass){
   else{
     checkUpperArr = false;
   }
-  console.log("checked UpperArr: " + checkUpperArr);
+  // console.log("checked UpperArr: " + checkUpperArr);
 
   if((info[2] && containsCharInArray(pass, lowerArr)) || !info[2]){
     checkLowerArr = true;
@@ -100,7 +100,7 @@ function validatePassword(info, pass){
   else{
     checkLowerArr = false;
   }
-  console.log("checked LowerArr: " + checkLowerArr);
+  // console.log("checked LowerArr: " + checkLowerArr);
 
   if((info[3] && containsCharInArray(pass, specArr)) || !info[3]){
     checkSpecArr = true;
@@ -108,7 +108,7 @@ function validatePassword(info, pass){
   else{
     checkSpecArr = false;
   }
-  console.log("checked SpecArr: " + checkSpecArr);
+  // console.log("checked SpecArr: " + checkSpecArr);
 
   if((info[4] && containsCharInArray(pass, numArr)) || !info[4]){
     checkNumArr = true;
@@ -116,14 +116,14 @@ function validatePassword(info, pass){
   else{
     checkNumArr = false;
   }
-  console.log("checked NumArr: " + checkNumArr);
+  // console.log("checked NumArr: " + checkNumArr);
 
   if(checkLength && checkUpperArr && checkLowerArr && checkSpecArr && checkNumArr){
-    console.log("all checks are true");
+    // console.log("all checks are true");
     return true;
   }
   else{
-    console.log("a check is false");
+    // console.log("a check is false");
     return false;
   }
   
@@ -158,7 +158,7 @@ function buildPassword(passInfo){
   let charArray = buildPassArray(passInfo);
   for(let i = 0; i < length; i++){
   password = password.concat(charArray[Math.floor(Math.random() * (charArray.length - 1))]);
-  console.log(password);
+  // console.log(password);
   }
   return password;
 }
@@ -180,12 +180,12 @@ function writePassword(){
     }
     else{
       verify = false;
-      console.log("password generation failed, trying again");
+      // console.log("password generation failed, trying again");
       attempts++;
     }
   }
 
-  console.log(password);
+  // console.log(password);
   document.getElementById("password").innerHTML = password;
   return password;
   }

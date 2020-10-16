@@ -171,8 +171,10 @@ function writePassword(){
   else{
       let verify = false;
   let attempts = 0;
+  let password = "";
   while(!verify && attempts < 100){
-    if(validatePassword(info, buildPassword(info))){
+    password = buildPassword(info);
+    if(validatePassword(info, password)){
       verify = true;
       attempts++;
     }
@@ -184,7 +186,7 @@ function writePassword(){
   }
 
   console.log(password);
-  document.getElementById(password).innerHTML = password;
+  document.getElementById("password").innerHTML = password;
   return password;
   }
 }

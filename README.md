@@ -26,6 +26,8 @@ Once valid inputs are given, the program builds a master array of all the user-i
 
 You might be thinking "Daron, that could potentially not output a valid password!". You'd be right. So I ran the numbers. In the highest chance scenario for a failed password, password generation yields an invalid password a theoretical 57% of the time. The failure rate in practice, was found to be 54.8% (tested 1,000,000 times, failed 547968 suceeded 452032 times, see probability math below for more). The chance of having a failure 100 times in a row is .548^100 or 0.00000000000000000000000000755189335581851%. In other words, this program has a 1 in 13,241,712,000,000,000,000,000,000,000 shot to fail. (Math found below).
 
+Use testPassWordGenerator(); to run the tests. It defaults to 10000 tests and parameters of [8, true, true, true, true]. 
+
 ### PROBABILITY MATH
 The set of requirements that have the highest chance of failure is character length of 8, and all characters valid. This gives the program the least number of chars to pick and least the chance of each set to be picked at least once.
 Total number of valid characters is 90. 10 of these are numbers, so this gives each randomly generated character an 8/9 chance of being NOT a number.

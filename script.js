@@ -2,11 +2,8 @@
 var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", buttonTester);
+generateBtn.addEventListener("click", writePassword);
 
-function buttonTester(){
-  alert("button pressed");
-}
 
 
 //functions to get user input data. getLength expects a string that is an integer, 

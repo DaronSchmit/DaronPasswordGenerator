@@ -6,7 +6,9 @@
 
 This project is focused on making a functional password generator using user inputs and random character generation. This is also an exercise in DOM manipulation and event listening.
 
-![Password Generation Demo!](DaronPasswordGenerator\Assets\03-javascript-homework-demo.png)
+THIS IS FOR DEMONSTRATION PURPOSES ONLY AND SHOULD NOT BE USED TO ACTUALLY GENERATE A PASSWORD.
+
+![Password Generation Demo!](.\Assets\03-javascript-homework-demo.png)
 
 ## Installation
 

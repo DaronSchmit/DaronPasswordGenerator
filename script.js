@@ -2,8 +2,11 @@
 var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", buttonTester);
 
+function buttonTester(){
+  alert("button pressed");
+}
 
 
 //functions to get user input data. getLength expects a string that is an integer, 
@@ -11,6 +14,7 @@ generateBtn.addEventListener("click", writePassword);
 //called in getPassInfo()
 function getLength(){
   return prompt("How long would you like your password to be? Needs to be between 8 and 128.");
+  //console.log("user wants ")
 }
 
 function getUpper(){
@@ -100,7 +104,7 @@ function validatePassword(info, pass){
   else{
     checkLength = false;
   }
-  console.log("checked length: " + checkLength);
+  //console.log("checked length: " + checkLength);
 
   //if the array has a 'true' value in index 1, 2, 3, or 4 (the user wanted those characters in the password), checks that the password contains at least one character from that set of characters. If the user didn't select a specific set of characters
   //if the array has a 'false' value in the index, doesn't check password for a character in that set.
@@ -111,38 +115,38 @@ function validatePassword(info, pass){
   else{
     checkUpperArr = false;
   }
-  console.log("checked UpperArr: " + checkUpperArr);
+  //console.log("checked UpperArr: " + checkUpperArr);
   if((info[2] && containsCharInArray(pass, lowerArr)) || !info[2]){
     checkLowerArr = true;
   }
   else{
     checkLowerArr = false;
   }
-  console.log("checked LowerArr: " + checkLowerArr);
+  //console.log("checked LowerArr: " + checkLowerArr);
   if((info[3] && containsCharInArray(pass, specArr)) || !info[3]){
     checkSpecArr = true;
   }
   else{
     checkSpecArr = false;
   }
-  console.log("checked SpecArr: " + checkSpecArr);
+  //console.log("checked SpecArr: " + checkSpecArr);
   if((info[4] && containsCharInArray(pass, numArr)) || !info[4]){
     checkNumArr = true;
   }
   else{
     checkNumArr = false;
   }
-  console.log("checked NumArr: " + checkNumArr);
+  //console.log("checked NumArr: " + checkNumArr);
   
   //only returns true if password contains a char from every set of chars if needed. 
   //if user didn't select to use a set of chars, the check is true, so it works out. 
   //verifyCharChoice prevents this from returning true if user selected no sets of Chars
   if(checkLength && checkUpperArr && checkLowerArr && checkSpecArr && checkNumArr){
-    console.log("all checks are true");
+    //console.log("all checks are true");
     return true;
   }
   else{
-  console.log("a check is false");
+  //console.log("a check is false");
     return false;
   }
   
@@ -182,7 +186,7 @@ function buildPassword(passInfo){
   let charArray = buildPassArray(passInfo);
   for(let i = 0; i < length; i++){
     password = password.concat(charArray[Math.floor(Math.random() * (charArray.length - 1))]);
-    console.log(password);
+    //console.log(password);
   }
   return password;
 }
@@ -206,17 +210,49 @@ function writePassword(){
         verify = true;
         attempts++;
       }
+      else if (attempts === 99){
+        alert("If this alert is up, the password generation failed 100 times.");
+      }
       else{
         verify = false;
-        console.log("password generation failed, trying again");
+        //console.log("password generation failed, trying again");
         attempts++;
       }
     }
 
-    console.log(password);
+    //console.log(password);
     document.getElementById("password").innerHTML = password;
     return password;
   }
 }
 
-
+function testPasswordGenerator(numberOfTests, testParameters){
+  let testPass;
+  let timesFailed = 0;
+  let timesSucceeded = 0;
+  if(numberOfTests === undefined){
+    numberOfTests = 1000;
+  }
+  if(testParameters === undefined){
+    testParameters = ["8", true, true, true, true];
+  }
+  for(let i=0; i < numberOfTests; i++){
+    testPass = buildPassword(testParameters);
+    testResult = validatePassword(testParameters, testPass);
+    if (testResult){
+      timesSucceeded++;
+    }
+    else{
+      timesFailed++;
+    }
+    //console.log("ran " + i + "times");
+  }
+  //console.log("ran " + numberOfTests + " times");
+  let failRate = timesFailed / numberOfTests;
+  console.log("current test parameters: " + testParameters);
+  console.log("tests conducted: " + numberOfTests);
+  console.log("failed " + timesFailed + " times");
+  console.log("suceeded " + timesSucceeded + " times");
+  console.log("Fail rate with current testing requirements is " + 100*failRate +"%");
+  return failRate;
+}

@@ -8,7 +8,7 @@ This project is focused on making a functional password generator using user inp
 
 THIS IS FOR DEMONSTRATION PURPOSES ONLY AND SHOULD NOT BE USED TO ACTUALLY GENERATE A PASSWORD.
 
-![Password Generation Demo!](.\Assets\03-javascript-homework-demo.png)
+![Password Generation Demo!](\Assets\03-javascript-homework-demo.png)
 
 ## Installation
 
